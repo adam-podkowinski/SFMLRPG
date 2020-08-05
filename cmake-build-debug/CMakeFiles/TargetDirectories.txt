@@ -1,3 +1,0 @@
-E:/SFMLProjects/test/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-E:/SFMLProjects/test/cmake-build-debug/CMakeFiles/test.dir
-E:/SFMLProjects/test/cmake-build-debug/CMakeFiles/edit_cache.dir
