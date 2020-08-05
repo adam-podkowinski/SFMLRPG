@@ -43,3 +43,6 @@
 .idea/test.iml
 build/
 .idea/vcs.xml
+cmake-build-debug/CMakeFiles/3.15.3/CompilerIdC/tmp/
+cmake-build-debug/CMakeFiles/3.15.3/CompilerIdCXX/tmp/
+cmake-build-debug/CMakeFiles/CMakeTmp/
