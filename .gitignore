@@ -1,0 +1,47 @@
+# Created by .ignore support plugin (hsz.mobi)
+### C++ template
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+.gitignore
+.idea/.gitignore
+.idea/.name
+.idea/codeStyles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/saveactions_settings.xml
+.idea/test.iml
+CMakeLists.txt
+build/
+cmake-build-debug/
+main.cpp
