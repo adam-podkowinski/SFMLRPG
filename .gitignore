@@ -41,7 +41,5 @@
 .idea/modules.xml
 .idea/saveactions_settings.xml
 .idea/test.iml
-CMakeLists.txt
 build/
-cmake-build-debug/
-main.cpp
+.idea/vcs.xml
