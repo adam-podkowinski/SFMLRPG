@@ -9,5 +9,5 @@ set(SFML_DIR "E:/Libraries/SFML-2.5.1/lib/cmake/SFML")
 
 find_package(SFML COMPONENTS window system graphics network audio)
 
-add_executable(SFMLRPG main.cpp Game.cpp Game.h State.cpp State.h)
+add_executable(SFMLRPG main.cpp Game.cpp Game.h States/State.cpp States/State.h States/GameState.cpp States/GameState.h)
 target_link_libraries(SFMLRPG sfml-graphics sfml-window sfml-system sfml-network sfml-audio)
