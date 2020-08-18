@@ -10,17 +10,18 @@
 class GameState : public State
 {
 private:
+    Entity player;
 
 public:
-    GameState(sf::RenderWindow* window);
+    explicit GameState(sf::RenderWindow* window);
 
-    virtual ~GameState();
+    ~GameState() override;
 
     //Functions
     void endState() override;
 
+    void updateInput(const float& dt) override;
     void update(const float& dt) override;
-
     void render(sf::RenderTarget* target = nullptr) override;
 };
 

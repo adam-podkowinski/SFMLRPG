@@ -36,8 +36,17 @@ void Game::initWindow()
     this->window->setVerticalSyncEnabled(vertical_sync_enabled);
 }
 
+void Game::initKeys()
+{
+    this->supportedKeys.emplace("A", sf::Keyboard::A);
+    this->supportedKeys.emplace("D", sf::Keyboard::D);
+    this->supportedKeys.emplace("W", sf::Keyboard::W);
+    this->supportedKeys.emplace("S", sf::Keyboard::S);
+}
+
 void Game::initStates()
 {
+    this->states.push(new GameState(this->window));
     this->states.push(new GameState(this->window));
 }
 
@@ -45,6 +54,7 @@ void Game::initStates()
 Game::Game()
 {
     this->initWindow();
+    this->initKeys();
     this->initStates();
 }
 
@@ -59,18 +69,17 @@ Game::~Game()
     }
 }
 
-//Static functions
-
 //Functions
+
+void Game::endApplication()
+{
+    std::cout << "Ending application" << std::endl;
+}
+
 void Game::updateDt()
 {
     // Updates the dt variable with the time it takes to render and update one frame
-
     this->dt = this->dtClock.restart().asSeconds();
-
-    // clear for linux, cls for windows
-    system("cls");
-    std::cout << this->dt << "\n";
 }
 
 void Game::updateSFMLEvents()
@@ -87,7 +96,23 @@ void Game::update()
     this->updateSFMLEvents();
 
     if (!this->states.empty())
+    {
         this->states.top()->update(this->dt);
+
+        if (this->states.top()->getQuit())
+        {
+            this->states.top()->endState();
+            delete this->states.top();
+            this->states.pop();
+        }
+    }
+    else
+    {
+        //Application ends
+        this->endApplication();
+        this->window->close();
+    }
+
 }
 
 void Game::render()

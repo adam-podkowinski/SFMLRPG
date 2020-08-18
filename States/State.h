@@ -4,35 +4,32 @@
 
 #pragma once
 
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <fstream>
-#include <sstream>
-#include <stack>
-#include <vector>
-#include <map>
-
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/System.hpp>
-#include <SFML/Audio.hpp>
+#include "../Entities/Entity.h"
 
 
 class State
 {
 private:
+
+protected:
     sf::RenderWindow* window;
     std::vector<sf::Texture> textures;
+    bool quit;
 
 public:
-    State(sf::RenderWindow* window);
+    explicit State(sf::RenderWindow* window);
 
     virtual ~State();
 
+    //Getters
+    const bool& getQuit() const;
+
+    //Functions
+
+    virtual void checkForQuit();
+
     virtual void endState() = 0;
-
+    virtual void updateInput(const float& dt) = 0;
     virtual void update(const float& dt) = 0;
-
     virtual void render(sf::RenderTarget* target = nullptr) = 0;
 };

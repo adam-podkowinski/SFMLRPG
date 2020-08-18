@@ -10,18 +10,20 @@ class Game
 {
 private:
     //Variables
-    sf::RenderWindow* window;
-    sf::Event sfEvent;
+    sf::RenderWindow* window{};
+    sf::Event sfEvent{};
 
     sf::Clock dtClock;
-    float dt;
+    float dt{};
 
     std::stack<State*> states;
 
+    std::map<std::string, int> supportedKeys;
+
     //Initialization
     void initWindow();
-
     void initStates();
+    void initKeys();
 
 public:
 
@@ -31,16 +33,20 @@ public:
     virtual ~Game();
 
     //Funcitons
+
+    //Regular
+    void endApplication();
+
+    //Update
     void updateDt();
-
     void updateSFMLEvents();
-
     void update();
 
+    //Render
     void render();
 
+    //Core
     void run();
-
 };
 
 

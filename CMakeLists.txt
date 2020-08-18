@@ -5,9 +5,12 @@ project(SFMLRPG)
 # The C++ standard version. Can be 98 11 14 or 17
 set(CMAKE_CXX_STANDARD 17)
 
-set(SFML_DIR "E:/Libraries/SFML-2.5.1/lib/cmake/SFML")
+set(SFML_STATIC_LIBRARIES TRUE)
 
-find_package(SFML COMPONENTS window system graphics network audio)
+set(SFML_DIR "Dependencies/SFML-2.5.1/lib/cmake/SFML")
 
-add_executable(SFMLRPG main.cpp Game.cpp Game.h States/State.cpp States/State.h States/GameState.cpp States/GameState.h)
-target_link_libraries(SFMLRPG sfml-graphics sfml-window sfml-system sfml-network sfml-audio)
+find_package(SFML COMPONENTS window graphics audio system REQUIRED)
+
+add_executable(SFMLRPG main.cpp Game.cpp Game.h States/State.cpp States/State.h States/GameState.cpp States/GameState.h Entities/Entity.cpp Entities/Entity.h)
+
+target_link_libraries(SFMLRPG sfml-window sfml-graphics sfml-audio sfml-system)
