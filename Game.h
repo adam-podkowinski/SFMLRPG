@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "States/GameState.h"
+#include "States/State.h"
 
 class Game
 {

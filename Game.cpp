@@ -3,17 +3,21 @@
 //
 
 #include "Game.h"
+#include "States/MainMenuState.h"
+#include "States/GameState.h"
 
 //Initialization
 void Game::initWindow()
 {
     //Creates an SFML window using options from a window.ini file
 
+    std::string file_name = "window.ini";
+
     //use if DEBUG in visual studio
 #ifndef NDEBUG
-    std::ifstream ifs("../Config/window.ini");
+    std::ifstream ifs("../Config/" + file_name);
 #else
-    std::ifstream ifs("Config/window.ini");
+    std::ifstream ifs("Config/" + file_name);
 #endif
 
     std::string title = "SFML RPG";
@@ -38,16 +42,31 @@ void Game::initWindow()
 
 void Game::initKeys()
 {
-    this->supportedKeys.emplace("A", sf::Keyboard::A);
-    this->supportedKeys.emplace("D", sf::Keyboard::D);
-    this->supportedKeys.emplace("W", sf::Keyboard::W);
-    this->supportedKeys.emplace("S", sf::Keyboard::S);
+    std::string file_name = "supported_keys.ini";
+
+//use if DEBUG in visual studio
+#ifndef NDEBUG
+    std::ifstream ifs("../Config/" + file_name);
+#else
+    std::ifstream ifs("Config/" + file_name);
+#endif
+
+    if (ifs.is_open())
+    {
+        std::string key;
+        int key_value = 0;
+
+        while (ifs >> key >> key_value)
+        {
+            this->supportedKeys[key] = key_value;
+        }
+    }
+    ifs.close();
 }
 
 void Game::initStates()
 {
-    this->states.push(new GameState(this->window));
-    this->states.push(new GameState(this->window));
+    this->states.push(new MainMenuState(this->window, &this->supportedKeys));
 }
 
 //Constructors/Destructors

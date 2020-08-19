@@ -12,8 +12,11 @@ class GameState : public State
 private:
     Entity player;
 
+    //Functions
+    void initKeybinds() override;
+
 public:
-    explicit GameState(sf::RenderWindow* window);
+    GameState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys);
 
     ~GameState() override;
 
