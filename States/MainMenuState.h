@@ -13,6 +13,7 @@ class MainMenuState : public State
 private:
     //Variables
     sf::RectangleShape background;
+    sf::Font font;
 
     //Functions
     void initFonts();

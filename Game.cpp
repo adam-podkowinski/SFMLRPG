@@ -13,12 +13,7 @@ void Game::initWindow()
 
     std::string file_name = "window.ini";
 
-    //use if DEBUG in visual studio
-#ifndef NDEBUG
-    std::ifstream ifs("../Config/" + file_name);
-#else
     std::ifstream ifs("Config/" + file_name);
-#endif
 
     std::string title = "SFML RPG";
     sf::VideoMode window_bounds(800, 600);
@@ -44,12 +39,7 @@ void Game::initKeys()
 {
     std::string file_name = "supported_keys.ini";
 
-//use if DEBUG in visual studio
-#ifndef NDEBUG
-    std::ifstream ifs("../Config/" + file_name);
-#else
     std::ifstream ifs("Config/" + file_name);
-#endif
 
     if (ifs.is_open())
     {

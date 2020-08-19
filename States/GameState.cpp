@@ -8,12 +8,7 @@ void GameState::initKeybinds()
 {
     std::string file_name = "gamestate_keybinds.ini";
 
-//use if DEBUG in visual studio
-#ifndef NDEBUG
-    std::ifstream ifs("../Config/" + file_name);
-#else
     std::ifstream ifs("Config/" + file_name);
-#endif
 
     if (ifs.is_open())
     {
