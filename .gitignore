@@ -119,3 +119,7 @@ cmake-build-release/Config/
 cmake-build-debug/Config/
 cmake-build-debug/Fonts/
 cmake-build-release/Fonts/
+!cmake-build-debug/Config
+!cmake-build-release/Config
+!cmake-build-debug/Fonts
+!cmake-build-release/Fonts
