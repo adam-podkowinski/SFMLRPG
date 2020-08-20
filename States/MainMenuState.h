@@ -31,8 +31,6 @@ public:
     ~MainMenuState() override;
 
     //Functions
-    void endState() override;
-
     void updateInput(const float& dt) override;
     void updateButtons();
     void update(const float& dt) override;

@@ -10,10 +10,12 @@
 class GameState : public State
 {
 private:
-    Entity player;
+    Player* player;
 
     //Functions
     void initKeybinds() override;
+    void initTextures();
+    void initPlayers();
 
 public:
     GameState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
@@ -21,8 +23,6 @@ public:
     ~GameState() override;
 
     //Functions
-    void endState() override;
-
     void updateInput(const float& dt) override;
     void update(const float& dt) override;
     void render(sf::RenderTarget* target = nullptr) override;

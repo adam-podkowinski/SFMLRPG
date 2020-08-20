@@ -14,12 +14,9 @@ State::State(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys
 
 State::~State() = default;
 
-void State::checkForQuit()
+void State::endState()
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("CLOSE"))))
-    {
-        this->quit = true;
-    }
+    this->quit = true;
 }
 
 const bool& State::getQuit() const
