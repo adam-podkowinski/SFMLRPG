@@ -115,10 +115,6 @@ cmake-build-release/Makefile
 cmake-build-release/SFMLRPG.cbp
 cmake-build-release/cmake_install.cmake
 cmake-build-release/CMakeFiles/SFMLRPG.dir/stP1kAlM
-cmake-build-release/Config/
-cmake-build-debug/Config/
-cmake-build-debug/Fonts/
-cmake-build-release/Fonts/
 !cmake-build-debug/Config
 !cmake-build-release/Config
 !cmake-build-debug/Fonts

@@ -7,6 +7,14 @@
 #include "States/GameState.h"
 
 //Initialization
+
+void Game::initVariables()
+{
+    this->window = nullptr;
+    this->fullscreen = false;
+    this->dt = 0.f;
+}
+
 void Game::initWindow()
 {
     //Creates an SFML window using options from a window.ini file
@@ -14,23 +22,34 @@ void Game::initWindow()
     std::string file_name = "window.ini";
 
     std::ifstream ifs("Config/" + file_name);
+    this->videoModes = sf::VideoMode::getFullscreenModes();
 
     std::string title = "SFML RPG";
-    sf::VideoMode window_bounds(800, 600);
+    sf::VideoMode window_bounds = sf::VideoMode::getDesktopMode();
+
     unsigned framerate_limit = 120;
     bool vertical_sync_enabled = false;
+    unsigned antialiasing_level = 0;
 
     if (ifs.is_open())
     {
-//        std::getline(ifs, title);
+        std::getline(ifs, title);
         ifs >> window_bounds.width >> window_bounds.height;
+        ifs >> this->fullscreen;
         ifs >> framerate_limit;
         ifs >> vertical_sync_enabled;
+        ifs >> antialiasing_level;
     }
-
     ifs.close();
 
-    this->window = new sf::RenderWindow(window_bounds, title);
+    this->windowSettings.antialiasingLevel = antialiasing_level;
+
+    if (this->fullscreen)
+        this->window = new sf::RenderWindow(window_bounds, title, sf::Style::Fullscreen, windowSettings);
+    else
+        this->window = new sf::RenderWindow(window_bounds, title, sf::Style::Titlebar | sf::Style::Close,
+                                            windowSettings);
+
     this->window->setFramerateLimit(framerate_limit);
     this->window->setVerticalSyncEnabled(vertical_sync_enabled);
 }
@@ -56,12 +75,13 @@ void Game::initKeys()
 
 void Game::initStates()
 {
-    this->states.push(new MainMenuState(this->window, &this->supportedKeys, 0));
+    this->states.push(new MainMenuState(this->window, &this->supportedKeys, &this->states));
 }
 
 //Constructors/Destructors
 Game::Game()
 {
+    this->initVariables();
     this->initWindow();
     this->initKeys();
     this->initStates();
@@ -144,4 +164,3 @@ void Game::run()
         this->render();
     }
 }
-
