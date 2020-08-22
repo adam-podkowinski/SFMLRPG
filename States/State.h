@@ -4,8 +4,6 @@
 
 #pragma once
 
-#include "../Entities/Player.h"
-
 
 class State
 {

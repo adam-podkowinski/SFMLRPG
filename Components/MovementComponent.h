@@ -4,33 +4,21 @@
 
 #pragma once
 
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <fstream>
-#include <sstream>
-#include <stack>
-#include <vector>
-#include <map>
-
-#include <SFML/System.hpp>
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
-
 class MovementComponent
 {
 private:
-    float maxVelocity;
-    sf::Vector2f velocity;
-    sf::Vector2f acceleration;
-    sf::Vector2f deceleration;
+    sf::Sprite& sprite;
 
+    float maxVelocity;
+
+    sf::Vector2f velocity;
+    float acceleration;
+    float deceleration;
     //Initializer functions
 
 
 public:
-    MovementComponent(float maxVelocity);
+    MovementComponent(sf::Sprite& sprite, float maxVelocity, float acceleration, float deceleration);
     virtual ~MovementComponent();
 
     //getters

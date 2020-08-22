@@ -4,7 +4,6 @@
 
 #include "Game.h"
 #include "States/MainMenuState.h"
-#include "States/GameState.h"
 
 //Initialization
 

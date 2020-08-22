@@ -5,7 +5,7 @@
 #pragma once
 
 #include "State.h"
-
+#include "../Entities/Player.h"
 
 class GameState : public State
 {
